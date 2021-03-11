@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2021 a las 12:36:45
+-- Tiempo de generación: 11-03-2021 a las 19:33:48
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyectonoticias`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `num` int(255) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `contenido` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`num`, `usuario`, `contenido`) VALUES
+(1, 'Admin', '¡Sean respetuosos con los comentarios!'),
+(2, 'Ernesto', '!Hola mundo!'),
+(10, 'Admin', 'Hola.');
 
 -- --------------------------------------------------------
 
@@ -61,11 +82,20 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`cod`, `nombre`, `correo`, `clave`) VALUES
 (1, 'Admin', 'admin@proyecto.com', '1234'),
 (12, 'prueba1', 'prueba@email.com', '1234'),
-(13, 'Ernesto', 'ernesto@email.com', '1234');
+(13, 'Ernesto', 'ernesto@email.com', '1234'),
+(15, 'Ernesto2', 'ernesto@email.com', '1234'),
+(16, 'prueba2', 'ernesto@email.com', '1234');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`num`),
+  ADD KEY `usuario` (`usuario`);
 
 --
 -- Indices de la tabla `noticias`
@@ -85,6 +115,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `num` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
@@ -94,7 +130,17 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
