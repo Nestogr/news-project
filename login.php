@@ -1,6 +1,7 @@
 <?php
 
-
+require 'comprobar_sesion.php';
+redirigir();
 
 ?>
 <!DOCTYPE html>

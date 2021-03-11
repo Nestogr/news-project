@@ -23,11 +23,11 @@
     <!--Plugins Bootstrap de Javascript-->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <style>
-    #contenido>div {
-        margin-bottom: 10px;
-        padding: 5px;
-        background-color: lightgray;
-    }
+        #contenido>div {
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: lightgray;
+        }
     </style>
 
 </head>
@@ -38,14 +38,16 @@
         <a class="navbar-brand" href="#">Bienvenido, <?php
 echo $_SESSION['usuario'];
 
-?> </a>
+?>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#plegado">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="plegado">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="#">Comentarios</a>
+                    <a class="nav-link" style="color: white" href=""
+                        onclick="return cargarComentarios()">Comentarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cargarNoticias()">Noticias</a>
@@ -61,8 +63,22 @@ echo $_SESSION['usuario'];
     <br>
     <div class="container">
         <div class="row">
+            <div class="col" id="form">
+                <form onsubmit="return anadirComentario();" method="post" id="formulario" style="display:none">
+                    <input type="hidden"
+                        value="<?php echo $_SESSION['usuario'] ?>"
+                        id="usuario">
+                    <textarea class="form-group" cols="30" row="3" id="contenidoComentario"></textarea>
+                    <br>
+                    <input class='btn btn-success btn - lg' value='Enviar' type='submit'>
+                </form>
+                <br>
+
+            </div>
+        </div>
+        <div class="row">
             <div class="col" id="contenido">
-               
+
 
 
             </div>

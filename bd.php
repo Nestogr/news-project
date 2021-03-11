@@ -60,7 +60,7 @@ function registrar_usuario($nombre, $passwd, $correo)
 function cargar_noticias()
 {
     $bd = conectarBD();
-    $sql = "select * from noticias";
+    $sql = "SELECT * from noticias";
     $resul = $bd->query($sql);
 
     if (!$resul) {
@@ -77,12 +77,69 @@ function eliminar_noticia($id)
 {
     $bd = conectarBD();
 
-    $sql = "delete from noticias where id = '$id'";
+    $sql = "DELETE from noticias where id = '$id'";
     $resul = $bd->query($sql);
 
     if (!$resul) {
         return false;
     }
 
+    return true;
+}
+
+function editar_noticia($id, $titular, $contenido)
+{
+    $bd = conectarBD();
+
+    $sql = "UPDATE categoria SET titular='$titular', contenido='$contenido' WHERE id='$id'";
+    $resul = $bd->query($sql);
+
+    if (!$resul) {
+        return false;
+    }
+
+    return true;
+}
+
+function anadir_noticia($titular, $contenido)
+{
+    $bd = conectarBD();
+    $insertarQuery = "INSERT INTO `noticias` (`id`, `titular`, `contenido`) VALUES (NULL, '$titular', '$contenido');";
+    $resul = $bd->query($insertarQuery);
+
+    if (!$resul) {
+        return false;
+    }
+    return true;
+}
+
+//Comentarios
+
+function cargar_comentarios()
+{
+    $bd = conectarBD();
+    $sql = "SELECT * from comentarios";
+    $resul = $bd->query($sql);
+
+    if (!$resul) {
+        return false;
+    }
+    if ($resul->rowCount() === 0) {
+        return false;
+    }
+   
+    return $resul;
+}
+
+
+function anadir_comentario($usuario, $contenido)
+{
+    $bd = conectarBD();
+    $insertarQuery = "INSERT INTO `comentarios` (`usuario`, `contenido`) VALUES ('$usuario', '$contenido');";
+    $resul = $bd->query($insertarQuery);
+
+    if (!$resul) {
+        return false;
+    }
     return true;
 }

@@ -21,3 +21,15 @@ function comprobar_registrado()
         header("Location: index.php");
     }
 }
+
+function redirigir()
+{
+    session_start();
+    if (isset($_SESSION['usuario'])) {
+        if ($_SESSION['usuario'] == 'Admin') {
+            header("Location: administrador.php");
+        } else {
+            header("Location:registrado.php");
+        }
+    }
+}

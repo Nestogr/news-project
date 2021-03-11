@@ -32,6 +32,7 @@ function cargarNoticias() {
                 var noticias = JSON.parse(this.responseText);
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
+                document.getElementById("formulario").style.display = "none";
                 contenedores = plantillaNoticias(noticias);
             } catch (e) {
                 alert("Error en noticias");
@@ -72,6 +73,7 @@ function cargarNoticiasAdmin() {
                 var noticias = JSON.parse(this.responseText);
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
+                document.getElementById("formulario").style.display = "none";
                 contenedores = plantillaNoticiasAdmin(noticias);
             } catch (e) {
                 alert("Error en noticias");
@@ -89,6 +91,12 @@ function cargarNoticiasAdmin() {
 
 function plantillaNoticiasAdmin(noticias) {
     var contenedorPadre = document.getElementById("contenido");
+      //creamos el botón para añadir una noticia:
+      var anadir = " <input class='btn btn-primary btn - lg' value='Añadir noticia' type='button' onclick='formularioNoticia()'/>";
+      var boton = document.createElement("label");
+      boton.id = "botonNoticia";
+      boton.innerHTML = anadir;
+      contenedorPadre.appendChild(boton);
 
     for (var i = 0; i < noticias.length; i++) {
         var contenedor = document.createElement("div");
@@ -130,6 +138,82 @@ function eliminarNoticia(id) {
     };
     var params = "id=" + id;
     xhttp.open("POST", "eliminar_noticia_json.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    return false;
+}
+
+
+//comentarios
+
+function cargarComentarios() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                var comentarios = JSON.parse(this.responseText);
+               
+                var contenedorPadre = document.getElementById("contenido");
+                contenedorPadre.innerHTML = "";
+                contenedores = plantillaComentarios(comentarios);
+                document.getElementById("formulario").style.display = "none";
+            } catch (e) {
+                alert("Error en comentarios");
+            }
+
+        }
+    };
+    xhttp.open("GET", "comentarios_json.php", true);
+    xhttp.send();
+    return false;
+}
+
+function plantillaComentarios(comentarios) {
+    var contenedorPadre = document.getElementById("contenido");
+    //creamos el botón para añadir un comentario:
+    var anadir = " <input class='btn btn-primary btn - lg' value='Añadir comentario' type='button' onclick='formularioComentario()'/>";
+    var boton = document.createElement("label");
+    boton.id = "botonComentario";
+    boton.innerHTML = anadir;
+    contenedorPadre.appendChild(boton);
+
+
+    for (var i = 0; i < comentarios.length; i++) {
+        var contenedor = document.createElement("div");
+        var usuario = document.createElement("h5");
+        var contenido = document.createElement("p");
+        usuario.innerHTML = "Escrito por " + comentarios[i]['usuario'];
+        contenido.innerHTML = comentarios[i]['contenido'];
+        contenedor.appendChild(usuario);
+        contenedor.appendChild(contenido);
+        contenedorPadre.appendChild(contenedor);
+
+
+    }
+
+}
+
+function formularioComentario()
+{
+   document.getElementById("formulario").style.display = "block";
+}
+
+
+function anadirComentario() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                alert("Comentario añadido con éxito");
+                cargarComentarios();
+            } catch (e) {
+                alert("Error al intentar añadir el comentario.");
+            }
+        }
+    };
+    var params = "usuario=" + document.getElementById("usuario").value
+        + "&contenidoComentario=" + document.getElementById("contenidoComentario").value;
+    xhttp.open("POST", "anadir_comentario_json.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(params);
     return false;

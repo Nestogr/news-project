@@ -22,12 +22,12 @@ comprobar_admin();
     <!--Plugins Bootstrap de Javascript-->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <style>
-    #contenido>div {
+        #contenido>div {
 
-        margin-bottom: 10px;
-        padding: 5px;
-        background-color: lightgray;
-    }
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: lightgray;
+        }
     </style>
 
 </head>
@@ -42,14 +42,13 @@ comprobar_admin();
         <div class="collapse navbar-collapse" id="plegado">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="#">Comentarios</a>
+                    <a class="nav-link" style="color: white" href=""
+                        onclick="return cargarComentarios()">Comentarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cargarNoticiasAdmin()">Noticias</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="registrado.php">Añadir noticia</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cerrarSesion()">Cerrar sesión</a>
                 </li>
@@ -61,8 +60,23 @@ comprobar_admin();
     <br>
     <div class=" container">
         <div class="row">
+            <div class="col" id="form">
+                <form onsubmit="return anadirComentario();" method="post" id="formulario" style="display:none">
+                    <input type="hidden"
+                        value="<?php echo $_SESSION['usuario'] ?>"
+                        id="usuario">
+                    <textarea class="form-group" cols="30" row="3" id="contenidoComentario"></textarea>
+                    <br>
+                    <input class='btn btn-success btn - lg' value='Enviar' type='submit'>
+                </form>
+                <br>
+
+            </div>
+        </div>
+        <div class="row">
             <div class="col" id="contenido">
-               
+
+
             </div>
         </div>
 
