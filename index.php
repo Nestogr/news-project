@@ -57,7 +57,7 @@
     <div class="container">
         <div class="row">
             <div class="col" id="form">
-                <form onsubmit="return anadirComentario();" method="post" id="formulario" style="display:none">
+                <form onsubmit="return anadirComentario();" method="post" id="formulario1" style="display:none">
                     <input type="hidden"
                         value="<?php echo $_SESSION['usuario'] ?>"
                         id="usuario">

@@ -32,7 +32,7 @@ function cargarNoticias() {
                 var noticias = JSON.parse(this.responseText);
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
-                document.getElementById("formulario").style.display = "none";
+                document.getElementById("formulario1").style.display = "none";
                 contenedores = plantillaNoticias(noticias);
             } catch (e) {
                 alert("Error en noticias");
@@ -73,7 +73,8 @@ function cargarNoticiasAdmin() {
                 var noticias = JSON.parse(this.responseText);
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
-                document.getElementById("formulario").style.display = "none";
+                document.getElementById("formulario1").style.display = "none";
+                document.getElementById("formulario2").style.display = "none";
                 contenedores = plantillaNoticiasAdmin(noticias);
             } catch (e) {
                 alert("Error en noticias");
@@ -122,6 +123,33 @@ function plantillaNoticiasAdmin(noticias) {
 
 }
 
+//añadir noticias
+
+function formularioNoticia()
+{
+   document.getElementById("formulario2").style.display = "block";
+}
+
+function anadirNoticia(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                alert("Noticia añadida con éxito");
+                cargarNoticiasAdmin();
+            } catch (e) {
+                alert("Error al intentar añadir la noticia.");
+            }
+        }
+    };
+    var params = "titular=" + document.getElementById("titular").value
+        + "&contenidoNoticia=" + document.getElementById("contenidoNoticia").value;
+    xhttp.open("POST", "anadir_noticia_json.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    return false;
+}
+
 //eliminar y editar noticias
 
 function eliminarNoticia(id) {
@@ -156,7 +184,8 @@ function cargarComentarios() {
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
                 contenedores = plantillaComentarios(comentarios);
-                document.getElementById("formulario").style.display = "none";
+                document.getElementById("formulario1").style.display = "none";
+                document.getElementById("formulario2").style.display = "none";
             } catch (e) {
                 alert("Error en comentarios");
             }
@@ -193,9 +222,11 @@ function plantillaComentarios(comentarios) {
 
 }
 
+
+//añadir comentarios
 function formularioComentario()
 {
-   document.getElementById("formulario").style.display = "block";
+   document.getElementById("formulario1").style.display = "block";
 }
 
 
