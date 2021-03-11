@@ -48,7 +48,7 @@ echo $_SESSION['usuario'];
                     <a class="nav-link" style="color: white" href="#">Comentarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="registrado.php">Noticias</a>
+                    <a class="nav-link" style="color: white" href="" onclick="return cargarNoticias()">Noticias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cerrarSesion()">Cerrar sesión</a>
@@ -62,30 +62,7 @@ echo $_SESSION['usuario'];
     <div class="container">
         <div class="row">
             <div class="col" id="contenido">
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
+               
 
 
             </div>

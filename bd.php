@@ -24,7 +24,6 @@ function comprobar_usuario($nombre, $clave)
 {
     try {
         $bd = conectarBD();
-        // Problema en la conexión
         if (!$bd) {
             return false;
         }
@@ -37,7 +36,6 @@ function comprobar_usuario($nombre, $clave)
             return false;
         }
     } catch (PDOException $e) {
-        // Se produce cualquier otro error
         return false;
     }
 }
@@ -53,5 +51,38 @@ function registrar_usuario($nombre, $passwd, $correo)
     if (!$resul) {
         return false;
     }
+    return true;
+}
+
+
+//Noticias
+
+function cargar_noticias()
+{
+    $bd = conectarBD();
+    $sql = "select * from noticias";
+    $resul = $bd->query($sql);
+
+    if (!$resul) {
+        return false;
+    }
+    if ($resul->rowCount() === 0) {
+        return false;
+    }
+   
+    return $resul;
+}
+
+function eliminar_noticia($id)
+{
+    $bd = conectarBD();
+
+    $sql = "delete from noticias where id = '$id'";
+    $resul = $bd->query($sql);
+
+    if (!$resul) {
+        return false;
+    }
+
     return true;
 }

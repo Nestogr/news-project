@@ -1,4 +1,7 @@
 <?php
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +10,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,user-scalable=no">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/datos.js"></script>
+    <script type="text/javascript" src="js/datos.js">
+    cargarNoticias();
+    </script>
     <script type="text/javascript" src="js/sesion.js"></script>
     <!--Plugins de Javascript-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -32,7 +37,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="plegado">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                    <a class="nav-link" style="color: white" href="" onclick="return cargarNoticias()">Noticias</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="login.php">Iniciar sesión</a>
                 </li>
@@ -48,31 +57,8 @@
     <div class="container">
         <div class="row">
             <div class="col" id="contenido">
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
-                <div class="prueba">
-                    <h2>Prueba</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia cumque sequi temporibus
-                        officiis! Incidunt doloremque ipsa debitis libero quos perferendis veniam in, earum animi optio
-                        laudantium aliquid sit at molestiae!</p>
-                </div>
 
+           
 
             </div>
         </div>
