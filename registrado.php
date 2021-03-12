@@ -27,6 +27,24 @@
             margin-bottom: 10px;
             padding: 5px;
             background-color: lightgray;
+            border: 3px solid white;
+        }
+
+        body {
+            background-image: url('img/fondo2.jpg');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        h4 {
+            color: white;
+        }
+
+        label {
+            color: white;
         }
     </style>
 
@@ -34,7 +52,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md	navbar-dark bg-primary">
+
+    <nav class="navbar navbar-expand-md	navbar-dark bg-secondary">
         <a class="navbar-brand" href="#">Bienvenido, <?php
 echo $_SESSION['usuario'];
 
@@ -61,6 +80,7 @@ echo $_SESSION['usuario'];
         </div>
     </nav>
     <br>
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -105,7 +125,7 @@ echo $_SESSION['usuario'];
                         id="usuario">
                     <div class="form-group">
 
-                        <label> Contenido:</label>
+                        <label> Comentario:</label>
                         <textarea class="form-control" id="contenidoComentario" cols="30" row="2"></textarea>
 
                     </div>

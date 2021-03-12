@@ -21,23 +21,22 @@ redirigir();
         padding: 15px;
         border: solid 1px black;
         background-color: AliceBlue;
-        margin-top: 10px;
+       
     }
 
-   
-  
+    body {
+            background-image: url('img/fondo1.jpg');
+            background-repeat: no-repeat;
+            background-position:center bottom;
+            background-attachment: fixed;
+            background-size: cover;
 
-    @media (max-width:540px) {
-
-        .formulario {
-            margin-top: 0px;
         }
-
-    }
     </style>
 </head>
 
 <body>
+
 
     <div class="container-fluid">
 

@@ -18,18 +18,24 @@ redirigir();
         padding: 15px;
         border: solid 1px black;
         background-color: AliceBlue;
-        margin-top: 10px;
+        
     }
-
     body {
-        background-image: url("img/fondo1.jpg");
-        background-size: cover;
-    }
+            background-image: url('img/fondo1.jpg');
+            background-repeat: no-repeat;
+            background-position:center bottom;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+    
     </style>
 </head>
 
 <body>
+
     <div class="container">
+    
         <div class="row">
 
             <div class="col-md-6 col offset-md-3 formulario">

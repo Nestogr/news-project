@@ -27,6 +27,24 @@ comprobar_admin();
             margin-bottom: 10px;
             padding: 5px;
             background-color: lightgray;
+            border: 3px solid white;
+        }
+
+        body {
+            background-image: url('img/fondo2.jpg');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        h4 {
+            color: white;
+        }
+
+        label {
+            color: white;
         }
     </style>
 
@@ -34,7 +52,7 @@ comprobar_admin();
 
 <body>
 
-    <nav class="navbar navbar-expand-md	navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md	navbar-dark bg-secondary">
         <a class="navbar-brand" href="#">Administrador</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#plegado">
             <span class="navbar-toggler-icon"></span>
