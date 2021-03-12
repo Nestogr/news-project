@@ -37,7 +37,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="plegado">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cargarNoticias()">Noticias</a>
                 </li>

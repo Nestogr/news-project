@@ -44,7 +44,7 @@ echo $_SESSION['usuario'];
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="plegado">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href=""
                         onclick="return cargarComentarios()">Comentarios</a>
@@ -62,6 +62,24 @@ echo $_SESSION['usuario'];
     </nav>
     <br>
     <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <form onsubmit="return editarNoticia();" method="post" id="formulario3" style="display:none">
+                    <div class="form-group">
+
+                        <label> Titular:</label>
+                        <input class="form-control" id="titularEditar" type="text">
+                        <label> Contenido:</label>
+                        <textarea class="form-control" id="contenidoNoticiaEditado" cols="30" row="2"></textarea>
+                        <input type="hidden" id="editarID">
+
+                    </div>
+                    <input class=" btn btn-success btn-lg" value="Editar" type="submit">
+                </form>
+            </div>
+
+        </div>
         <div class="row">
             <div class="col">
 
@@ -88,7 +106,7 @@ echo $_SESSION['usuario'];
                     <div class="form-group">
 
                         <label> Contenido:</label>
-                        <textarea class="form-control" id="contenidoNoticia" cols="30" row="2"></textarea>
+                        <textarea class="form-control" id="contenidoComentario" cols="30" row="2"></textarea>
 
                     </div>
                     <br>

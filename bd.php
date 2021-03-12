@@ -60,7 +60,7 @@ function registrar_usuario($nombre, $passwd, $correo)
 function cargar_noticias()
 {
     $bd = conectarBD();
-    $sql = "SELECT * from noticias";
+    $sql = "SELECT * FROM noticias";
     $resul = $bd->query($sql);
 
     if (!$resul) {
@@ -72,6 +72,23 @@ function cargar_noticias()
    
     return $resul;
 }
+
+function cargar_noticia($id)
+{
+    $bd = conectarBD();
+    $sql = "SELECT * FROM noticias WHERE id = $id";
+    $resul = $bd->query($sql);
+    if (!$resul) {
+        return false;
+    }
+    if ($resul->rowCount() === 0) {
+        return false;
+    }
+   
+    return $resul;
+}
+
+
 
 function eliminar_noticia($id)
 {
@@ -91,7 +108,7 @@ function editar_noticia($id, $titular, $contenido)
 {
     $bd = conectarBD();
 
-    $sql = "UPDATE categoria SET titular='$titular', contenido='$contenido' WHERE id='$id'";
+    $sql = "UPDATE noticias SET titular='$titular', contenido='$contenido' WHERE id='$id'";
     $resul = $bd->query($sql);
 
     if (!$resul) {

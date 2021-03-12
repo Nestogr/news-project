@@ -3,6 +3,7 @@
 require_once 'bd.php';
 
 
+
 $usuario = $_POST['usuario'];
 $correo = $_POST['correo'];
 $clave = $_POST['clave'];

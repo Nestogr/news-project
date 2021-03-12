@@ -48,8 +48,13 @@ function cargarNoticias() {
 
 function plantillaNoticias(noticias) {
     var contenedorPadre = document.getElementById("contenido");
+    var titulo = document.createElement("h4");
+    titulo.innerHTML = "Últimas noticias";
+    contenedorPadre.appendChild(titulo);
 
     for (var i = 0; i < noticias.length; i++) {
+
+
         var contenedor = document.createElement("div");
         var titular = document.createElement("h2");
         var contenido = document.createElement("p");
@@ -75,6 +80,7 @@ function cargarNoticiasAdmin() {
                 contenedorPadre.innerHTML = "";
                 document.getElementById("formulario1").style.display = "none";
                 document.getElementById("formulario2").style.display = "none";
+                document.getElementById("formulario3").style.display = "none";
                 contenedores = plantillaNoticiasAdmin(noticias);
             } catch (e) {
                 alert("Error en noticias");
@@ -92,12 +98,15 @@ function cargarNoticiasAdmin() {
 
 function plantillaNoticiasAdmin(noticias) {
     var contenedorPadre = document.getElementById("contenido");
-      //creamos el botón para añadir una noticia:
-      var anadir = " <input class='btn btn-primary btn - lg' value='Añadir noticia' type='button' onclick='formularioNoticia()'/>";
-      var boton = document.createElement("label");
-      boton.id = "botonNoticia";
-      boton.innerHTML = anadir;
-      contenedorPadre.appendChild(boton);
+    //creamos el botón para añadir una noticia:
+    var anadir = " <input class='btn btn-primary btn - lg' value='Añadir noticia' type='button' onclick='formularioNoticia()'/>";
+    var boton = document.createElement("label");
+    boton.id = "botonNoticia";
+    boton.innerHTML = anadir;
+    contenedorPadre.appendChild(boton);
+    var titulo = document.createElement("h4");
+    titulo.innerHTML = "Últimas noticias";
+    contenedorPadre.appendChild(titulo);
 
     for (var i = 0; i < noticias.length; i++) {
         var contenedor = document.createElement("div");
@@ -108,7 +117,7 @@ function plantillaNoticiasAdmin(noticias) {
 
 
         var eliminar = " <input class='btn btn-danger btn - lg' value='Eliminar' type='button' onclick='eliminarNoticia(" + noticias[i]['id'] + ")'/>";
-        var editar = " <input class='btn btn-success btn - lg' value='Editar' type='button' onclick='editarNoticia(" + noticias[i]['id'] + ")'/>";
+        var editar = " <input class='btn btn-success btn - lg' value='Editar' type='button' onclick='plantillaEditarNoticia(" + noticias[i]['id'] + ")'/>";
         var botones = eliminar + editar;
         var grupoBotones = document.createElement("div");
         grupoBotones.innerHTML = botones;
@@ -125,12 +134,11 @@ function plantillaNoticiasAdmin(noticias) {
 
 //añadir noticias
 
-function formularioNoticia()
-{
-   document.getElementById("formulario2").style.display = "block";
+function formularioNoticia() {
+    document.getElementById("formulario2").style.display = "block";
 }
 
-function anadirNoticia(){
+function anadirNoticia() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -171,6 +179,50 @@ function eliminarNoticia(id) {
     return false;
 }
 
+function editarNoticia() {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                alert("Noticia editada con éxito");
+                cargarNoticiasAdmin();
+            } catch (e) {
+                alert("Error al intentar editar la noticia.");
+            }
+        }
+    };
+    var params = "id=" + document.getElementById("editarID").value + "&titular=" + document.getElementById("titularEditar").value + "&contenido=" + document.getElementById("contenidoNoticiaEditado").value;
+    xhttp.open("POST", "editar_noticia_json.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    return false;
+
+
+
+}
+
+function plantillaEditarNoticia(id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("formulario3").style.display = "block";
+            var titular = document.getElementById("titularEditar");
+            var contenido = document.getElementById("contenidoNoticiaEditado");
+            var codigo = document.getElementById("editarID");
+            var noticia = JSON.parse(this.responseText);
+            titular.value = noticia[0]['titular'];
+            contenido.value = noticia[0]['contenido'];
+            codigo.value = id;
+
+
+        }
+    };
+    xhttp.open("GET", "noticia_json.php?id=" + id, true);
+    xhttp.send();
+    return false;
+}
+
 
 //comentarios
 
@@ -180,12 +232,13 @@ function cargarComentarios() {
         if (this.readyState == 4 && this.status == 200) {
             try {
                 var comentarios = JSON.parse(this.responseText);
-               
+
                 var contenedorPadre = document.getElementById("contenido");
                 contenedorPadre.innerHTML = "";
                 contenedores = plantillaComentarios(comentarios);
                 document.getElementById("formulario1").style.display = "none";
                 document.getElementById("formulario2").style.display = "none";
+                document.getElementById("formulario3").style.display = "none";
             } catch (e) {
                 alert("Error en comentarios");
             }
@@ -205,6 +258,9 @@ function plantillaComentarios(comentarios) {
     boton.id = "botonComentario";
     boton.innerHTML = anadir;
     contenedorPadre.appendChild(boton);
+    var titulo = document.createElement("h4");
+    titulo.innerHTML = "Comentarios";
+    contenedorPadre.appendChild(titulo);
 
 
     for (var i = 0; i < comentarios.length; i++) {
@@ -224,9 +280,8 @@ function plantillaComentarios(comentarios) {
 
 
 //añadir comentarios
-function formularioComentario()
-{
-   document.getElementById("formulario1").style.display = "block";
+function formularioComentario() {
+    document.getElementById("formulario1").style.display = "block";
 }
 
 

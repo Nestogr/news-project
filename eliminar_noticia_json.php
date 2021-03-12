@@ -2,6 +2,7 @@
 
 require_once 'bd.php';
 
+
 $id = $_POST['id'];
 
 $json = eliminar_noticia($id);

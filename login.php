@@ -20,6 +20,11 @@ redirigir();
         background-color: AliceBlue;
         margin-top: 10px;
     }
+
+    body {
+        background-image: url("img/fondo1.jpg");
+        background-size: cover;
+    }
     </style>
 </head>
 

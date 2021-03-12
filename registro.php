@@ -14,18 +14,32 @@ redirigir();
     <script type="text/javascript" src="js/datos.js"></script>
 
     <style>
+    
+
+
     .formulario {
         padding: 15px;
         border: solid 1px black;
         background-color: AliceBlue;
         margin-top: 10px;
     }
+
+   
+  
+
+    @media (max-width:540px) {
+
+        .formulario {
+            margin-top: 0px;
+        }
+
+    }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row">
 
@@ -81,6 +95,8 @@ redirigir();
 
     }
     </script>
+
+   
 </body>
 
 </html>

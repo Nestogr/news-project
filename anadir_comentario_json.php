@@ -2,6 +2,7 @@
 
 require_once 'bd.php';
 
+
 $usuario = $_POST['usuario'];
 $contenido = $_POST['contenidoComentario'];
 

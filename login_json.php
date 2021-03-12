@@ -1,6 +1,9 @@
 <?php
 
 require_once 'bd.php';
+require 'comprobar_sesion.php';
+redirigir();
+comprobar_sesion();
 
     
 
