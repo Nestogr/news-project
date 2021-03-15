@@ -61,7 +61,7 @@ comprobar_admin();
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href=""
-                        onclick="return cargarComentarios()">Comentarios</a>
+                        onclick="return cargarComentariosAdmin()">Comentarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white" href="" onclick="return cargarNoticiasAdmin()">Noticias</a>

@@ -160,3 +160,17 @@ function anadir_comentario($usuario, $contenido)
     }
     return true;
 }
+
+function eliminar_comentario($id)
+{
+    $bd = conectarBD();
+
+    $sql = "DELETE from comentarios where num = '$id'";
+    $resul = $bd->query($sql);
+
+    if (!$resul) {
+        return false;
+    }
+
+    return true;
+}
