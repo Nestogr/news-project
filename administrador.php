@@ -114,7 +114,7 @@ comprobar_admin();
         </div>
         <div class="row">
             <div class="col">
-                <form onsubmit="return anadirComentario();" method="post" id="formulario1" style="display:none">
+                <form onsubmit="return anadirComentarioAdmin();" method="post" id="formulario1" style="display:none">
                     <input type="hidden"
                         value="<?php echo $_SESSION['usuario'] ?>"
                         id="usuario">

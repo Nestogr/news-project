@@ -361,6 +361,26 @@ function anadirComentario() {
     return false;
 }
 
+function anadirComentarioAdmin() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                alert("Comentario añadido con éxito");
+                cargarComentariosAdmin();
+            } catch (e) {
+                alert("Error al intentar añadir el comentario.");
+            }
+        }
+    };
+    var params = "usuario=" + document.getElementById("usuario").value
+        + "&contenidoComentario=" + document.getElementById("contenidoComentario").value;
+    xhttp.open("POST", "anadir_comentario_json.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    return false;
+}
+
 //eliminar comentarios
 function eliminarComentario(id) {
     var xhttp = new XMLHttpRequest();
