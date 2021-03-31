@@ -119,7 +119,7 @@ echo $_SESSION['usuario'];
         </div>
         <div class="row">
             <div class="col" id="form">
-                <form onsubmit="return anadirComentario();" method="post" id="formulario1" style="display:none">
+                <form onsubmit="return validacionComentario();" method="post" id="formulario1" style="display:none">
                     <input type="hidden"
                         value="<?php echo $_SESSION['usuario'] ?>"
                         id="usuario">
@@ -146,6 +146,27 @@ echo $_SESSION['usuario'];
         </div>
 
     </div>
+
+    <script type="text/javascript">
+    //aqui comprobamos antes de enviar el formulario
+   
+
+    function validacionComentario() {
+        var comentario = document.getElementById("contenidoComentario").value;
+      
+
+        if (comentario.length == 0) {
+            alert("El contenido del comentario no puede quedar vacío");
+            return false;
+        } else {
+            return anadirComentario();
+        }
+
+
+    }
+
+
+    </script>
 
 </body>
 
