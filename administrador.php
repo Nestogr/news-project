@@ -80,7 +80,7 @@ comprobar_admin();
         <div class="row">
             <div class="col">
 
-                <form onsubmit="return editarNoticia();" method="post" id="formulario3" style="display:none">
+                <form onsubmit="return validacionNoticiaEditada();" method="post" id="formulario3" style="display:none">
                     <div class="form-group">
 
                         <label> Titular:</label>
@@ -98,7 +98,7 @@ comprobar_admin();
         <div class="row">
             <div class="col">
 
-                <form onsubmit="return anadirNoticia();" method="post" id="formulario2" style="display:none">
+                <form onsubmit="return validacionNoticia();" method="post" id="formulario2" style="display:none">
                     <div class="form-group">
 
                         <label> Titular:</label>
@@ -114,7 +114,7 @@ comprobar_admin();
         </div>
         <div class="row">
             <div class="col">
-                <form onsubmit="return anadirComentarioAdmin();" method="post" id="formulario1" style="display:none">
+                <form onsubmit="return validacionComentario();" method="post" id="formulario1" style="display:none">
                     <input type="hidden"
                         value="<?php echo $_SESSION['usuario'] ?>"
                         id="usuario">
@@ -140,6 +140,68 @@ comprobar_admin();
         </div>
 
     </div>
+
+    <script type="text/javascript">
+    //aqui comprobamos antes de enviar el formulario
+    function validacionNoticia() {
+        var titular = document.getElementById("titular").value;
+        var contenidoNoticia = document.getElementById("contenidoNoticia").value;
+
+        if (titular.length == 0) {
+            alert("El titular no puede quedar vacío");
+            return false;
+        } else {
+            if (contenidoNoticia.length == 0) {
+                alert("El contenido de la noticia no puede quedar vacío");
+                return false;
+            } else {
+                return anadirNoticia();
+            }
+
+        }
+
+
+    }
+
+    function validacionNoticiaEditada() {
+        var titular = document.getElementById("titularEditar").value;
+        var contenidoNoticia = document.getElementById("contenidoNoticiaEditado").value;
+
+        if (titular.length == 0) {
+            alert("El titular no puede quedar vacío");
+            return false;
+        } else {
+            if (contenidoNoticia.length == 0) {
+                alert("El contenido de la noticia no puede quedar vacío");
+                return false;
+            } else {
+                return editarNoticia();
+            }
+
+        }
+
+
+    }
+
+
+    function validacionComentario() {
+        var comentario = document.getElementById("contenidoComentario").value;
+      
+
+        if (comentario.length == 0) {
+            alert("El contenido del comentario no puede quedar vacío");
+            return false;
+        } else {
+            return anadirComentarioAdmin();
+        }
+
+
+    }
+
+
+    </script>
+
+
 
 </body>
 
