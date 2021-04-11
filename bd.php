@@ -22,22 +22,23 @@ function conectarBD()
 
 function comprobar_usuario($nombre, $clave)
 {
-    try {
-        $bd = conectarBD();
-        if (!$bd) {
-            return false;
-        }
-        $sql = "select Cod from usuarios where nombre = '$nombre' 
+        try {
+            $bd = conectarBD();
+            if(!$bd){
+                return FALSE;
+            }
+             $sql = "select Cod from usuarios where nombre = '$nombre' 
 			and clave = '$clave'";
-        $resul = $bd->query($sql);
-        if ($resul->rowCount() === 1) {
-            return $resul->fetch();
-        } else {
-            return false;
+            $resul = $bd->query($sql);
+            if ($resul->rowCount() === 1) {
+                return $resul->fetch();
+            } else {
+                return FALSE;
+            }
+        } catch (PDOException $e) {
+            return FALSE;
         }
-    } catch (PDOException $e) {
-        return false;
-    }
+   
 }
 
 
