@@ -136,6 +136,7 @@ function plantillaNoticiasAdmin(noticias) {
 
 function formularioNoticia() {
     document.getElementById("formulario2").style.display = "block";
+    document.getElementById("formulario3").style.display = "none";
 }
 
 function anadirNoticia() {
@@ -207,6 +208,7 @@ function plantillaEditarNoticia(id) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("formulario3").style.display = "block";
+            document.getElementById("formulario2").style.display = "none";
             var titular = document.getElementById("titularEditar");
             var contenido = document.getElementById("contenidoNoticiaEditado");
             var codigo = document.getElementById("editarID");
