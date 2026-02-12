@@ -2,22 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Core\Controller;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Comment;
 
-class NewsController
+class NewsController extends Controller
 {
     private $newsModel;
     private $userModel;
 
     public function __construct()
     {
+        parent::__construct();
         $this->newsModel = new News();
         $this->userModel = new User();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
     }
 
     public function index()
@@ -33,6 +32,11 @@ class NewsController
     public function show($id)
     {
         $newsItem = $this->newsModel->getById($id);
+        if (!$newsItem) {
+            http_response_code(404);
+            echo '404 Not Found';
+            exit;
+        }
         $user = null;
         if (isset($_SESSION['user'])) {
             $user = $this->userModel->findByUsername($_SESSION['user']);
@@ -43,7 +47,6 @@ class NewsController
             'newsItem' => $newsItem,
             'user' => $user,
             'comments' => $comments,
-            'commentModel' => $commentModel
         ]);
     }
 
@@ -91,9 +94,5 @@ class NewsController
         exit;
     }
 
-    private function render($view, $data = [])
-    {
-        extract($data);
-        require_once __DIR__ . '/../../views/' . $view . '.php';
-    }
+
 }

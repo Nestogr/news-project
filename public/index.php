@@ -19,9 +19,6 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/register', [AuthController::class, 'register']);
     $r->addRoute('GET', '/logout', [AuthController::class, 'logout']);
 
-    $r->addRoute('GET', '/api/comments', [CommentController::class, 'index']);
-    $r->addRoute('POST', '/api/comments', [CommentController::class, 'store']);
-    $r->addRoute('POST', '/api/comments/delete', [CommentController::class, 'delete']);
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];

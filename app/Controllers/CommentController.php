@@ -2,48 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Core\Controller;
 use App\Models\Comment;
 
-class CommentController
+class CommentController extends Controller
 {
     private $commentModel;
-    private const JSON_HEADER = 'Content-Type: application/json';
 
     public function __construct()
     {
+        parent::__construct();
         $this->commentModel = new Comment();
-    }
-
-    public function index()
-    {
-        $comments = $this->commentModel->getAll();
-        header(self::JSON_HEADER);
-        echo json_encode($comments);
-    }
-
-    public function store()
-    {
-        $user_id = $_POST['user_id'] ?? null;
-        $news_id = $_POST['news_id'] ?? null;
-        $content = $_POST['content'] ?? '';
-        $result = $this->commentModel->create($user_id, $news_id, $content);
-        header(self::JSON_HEADER);
-        echo json_encode(['success' => $result]);
-    }
-
-    public function delete()
-    {
-        $id = $_POST['id'] ?? null;
-        $result = $this->commentModel->delete($id);
-        header(self::JSON_HEADER);
-        echo json_encode(['success' => $result]);
     }
 
     public function storeForNews($news_id)
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
         if (!isset($_SESSION['user'])) {
             header('Location: /login');
             exit;
