@@ -70,7 +70,7 @@ try {
         ('test', 'test@project.com', '$testPass', 'user')
     ;");
 
-    $adminId = $pdo->query("SELECT id FROM users WHERE username = 'Admin'")->fetchColumn();
+    $adminId = $pdo->query("SELECT id FROM users WHERE username = 'admin'")->fetchColumn();
     $testId = $pdo->query("SELECT id FROM users WHERE username = 'test'")->fetchColumn();
     $pdo->exec("INSERT IGNORE INTO news (id, title, content, user_id) VALUES
         (1, 'Title 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', $adminId),

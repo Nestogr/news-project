@@ -2,19 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Core\Controller;
 use App\Models\User;
 
-class AuthController
+class AuthController extends Controller
 {
     private $userModel;
     private const LOGIN_LOCATION = 'Location: /login';
 
     public function __construct()
     {
+        parent::__construct();
         $this->userModel = new User();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
     }
 
     public function login()
@@ -62,9 +61,5 @@ class AuthController
         exit;
     }
 
-    private function render($view, $data = [])
-    {
-        extract($data);
-        require __DIR__ . '/../../views/' . $view . '.php';
-    }
+
 }

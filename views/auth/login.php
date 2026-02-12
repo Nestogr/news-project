@@ -12,7 +12,7 @@ ob_start();
                         <h3 class="fw-bold">Sign in</h3>
                     </div>
                     <?php if (isset($error)) : ?>
-                        <div class="alert alert-danger text-center"><?php echo $error; ?></div>
+                        <div class="alert alert-danger text-center"><?php echo htmlspecialchars($error); ?></div>
                     <?php endif; ?>
                     <form method="post" autocomplete="off">
                         <div class="mb-3">
